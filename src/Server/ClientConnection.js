@@ -27,7 +27,8 @@ export default class ClientConnection {
     this.id = ClientConnection.getNewID();
     ClientConnection.registerConnection(this);
 
-    ws.on('close', function () {
+    ws.on('close', () => {
+      console.log(this.id+'| closed');
       ClientConnection.unregisterConnection(this);
     });
     ws.on('message', this.onMessage);
@@ -39,7 +40,7 @@ export default class ClientConnection {
 
   keepAlive = () => {
     const now = new Date().getTime();
-    if(now - this.lastMessage > 20*1000) {
+    if(now - this.lastMessage > 2*1000) {
       this.send({keepAlive:true});
     }
   }
@@ -47,8 +48,8 @@ export default class ClientConnection {
   send = (data) => {
     this.lastMessage = new Date().getTime();
     try{
-      this.ws.send(JSON.stringify(data), function () {
-        console.log('send callback');
+      this.ws.send(JSON.stringify(data), () => {
+        console.log(this.id+'| send callback');
       });
     } catch(err) {
       console.log(err);
@@ -56,6 +57,8 @@ export default class ClientConnection {
   }
 
   onMessage = (message) => {
-    console.log(message);
+    this.lastMessage = new Date().getTime();
+    console.log(this.id+'| message(last: '+this.lastMessage+'): ', message);
+    this.send({'reply':''});
   }
 }
