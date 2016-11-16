@@ -7,8 +7,12 @@
     "clean": "rimraf dist/*",
     "copy": "copyfiles -f ./src/index.html ./src/favicon.ico ./dist",
     "dist": "npm run clean && webpack --env=dist && npm run copy",
-    "start": "node src/Server/server.js --env=dev",
-    "start:dist": "node src/Server/server.js --env=dist"
+
+    "startClient": "babel-node webpack.js --env=dev",
+    "startClient:dist": "babel-node webpack.js --env=dist",
+
+    "start": "babel-node src/server.js --env=dev",
+    "start:dist": "babel-node src/server.js --env=dist"
   },
   "repository": {
     "type": "git",
@@ -34,9 +38,37 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "1.16.2"
+    "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "express": "4.14.0"
-  }
+    "ws": "^1.1.1",
+    "bit-twiddle": "^1.0.2",
+    "earcut": "^2.0.7",
+    "eventemitter3": "^2.0.0",
+    "glslify": "^5.0.2",
+    "ismobilejs": "^0.4.0",
+    "object-assign": "^4.0.1",
+    "pixi-gl-core": "^1.0.2",
+    "resource-loader": "^1.8.0",
+    "browserify-versionify": "^1.0.6"
+  },
+  "browserify": {
+   "transform": [
+     [
+       "babelify",
+       {
+         "presets": [
+           [
+             "es2015",
+             {
+               "loose": true
+             }
+           ]
+         ]
+       }
+     ],
+     "glslify",
+     "browserify-versionify"
+   ]
+ }
 }
