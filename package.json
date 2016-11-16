@@ -1,0 +1,42 @@
+{
+  "name": "PixelCraft",
+  "version": "0.0.1",
+  "description": "You can make Your own stuff here",
+  "main": "src/Server/index.js",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "copy": "copyfiles -f ./src/index.html ./src/favicon.ico ./dist",
+    "dist": "npm run clean && webpack --env=dist && npm run copy",
+    "start": "node src/Server/server.js --env=dev",
+    "start:dist": "node src/Server/server.js --env=dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sivael/PixelCraft.git"
+  },
+  "keywords": [
+    "webSockets",
+    "Pixi.JS",
+    "MMO",
+    "RPG"
+  ],
+  "author": "Tymoteusz Kapuściński",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-root-import": "^4.1.3",
+    "json-loader": "^0.5.4",
+    "minimist": "^1.2.0",
+    "null-loader": "^0.1.1",
+    "rimraf": "^2.5.4",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "1.16.2"
+  },
+  "dependencies": {
+    "express": "4.14.0"
+  }
+}
