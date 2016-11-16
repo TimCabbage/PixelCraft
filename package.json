@@ -42,33 +42,6 @@
   },
   "dependencies": {
     "ws": "^1.1.1",
-    "bit-twiddle": "^1.0.2",
-    "earcut": "^2.0.7",
-    "eventemitter3": "^2.0.0",
-    "glslify": "^5.0.2",
-    "ismobilejs": "^0.4.0",
-    "object-assign": "^4.0.1",
-    "pixi-gl-core": "^1.0.2",
-    "resource-loader": "^1.8.0",
-    "browserify-versionify": "^1.0.6"
-  },
-  "browserify": {
-   "transform": [
-     [
-       "babelify",
-       {
-         "presets": [
-           [
-             "es2015",
-             {
-               "loose": true
-             }
-           ]
-         ]
-       }
-     ],
-     "glslify",
-     "browserify-versionify"
-   ]
- }
+    "pixi.js": "^4.1.1"
+  }
 }
