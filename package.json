@@ -4,12 +4,11 @@
   "description": "You can make Your own stuff here",
   "main": "src/Server/index.js",
   "scripts": {
-    "clean": "rimraf dist/*",
-    "copy": "copyfiles -f ./src/index.html ./src/favicon.ico ./dist",
-    "dist": "npm run clean && webpack --env=dist && npm run copy",
+    "clean": "rimraf PixelCraft/www/*",
+    "dist": "npm run clean && webpack --env=dist",
 
-    "startClient": "babel-node webpack.js --env=dev",
-    "startClient:dist": "babel-node webpack.js --env=dist",
+    "startClient": "babel-node webpackServer.js --env=dev",
+    "startClient:dist": "babel-node webpackServer.js --env=dist",
 
     "start": "babel-node src/server.js --env=dev",
     "start:dist": "babel-node src/server.js --env=dist"
@@ -38,7 +37,8 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "copy-webpack-plugin": "*"
   },
   "dependencies": {
     "ws": "^1.1.1",

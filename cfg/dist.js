@@ -3,6 +3,8 @@ const baseConfig = require('./base')
 const defaults = require('./defaults')
 const JS_FILENAME = baseConfig.output.filename
 const CONTEXT_PATH = ''
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 const config = Object.assign({}, baseConfig, {
   entry: [
@@ -21,7 +23,10 @@ const config = Object.assign({}, baseConfig, {
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new CopyWebpackPlugin([
+        { from: './src/Client/Public' }
+    ])
   ],
   module: defaults.getDefaultModules()
 })

@@ -83,7 +83,7 @@ export default class ClientConnection {
   send = (data) => {
     this.lastMessage = new Date().getTime();
     try{
-      console.log(data);
+      //console.log(data);
       this.ws.send(JSON.stringify(data), () => {
         //console.log(this.id+'| send callback');
       });
@@ -95,6 +95,6 @@ export default class ClientConnection {
   onMessage = (message) => {
     this.lastMessage = new Date().getTime();
     ClientConnection.broadcastMessage(JSON.parse(message), this);
-    console.log(this.id+'| message(last: '+this.lastMessage+'): ', message);
+    //console.log(this.id+'| message(last: '+this.lastMessage+'): ', message);
   }
 }

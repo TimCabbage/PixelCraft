@@ -1,6 +1,6 @@
 const path = require('path')
 const srcPath = path.join(__dirname, '/../src')
-const distPath = path.join(__dirname, '/../dist')
+const distPath = path.join(__dirname, '/../PixelCraft/www')
 const testPath = path.join(__dirname, '/../test')
 const HOST = 'http://localhost'
 const PORT = 80
