@@ -33,7 +33,7 @@ export default class ClientConnection {
     this.ws = ws;
     this.lastMessage = new Date().getTime();
     this.id = ClientConnection.getNewID();
-    this.pos = [Math.floor(Math.random()*400), Math.floor(Math.random()*300)];
+    this.pos = [Math.floor(Math.random()*10) - 5, Math.floor(Math.random()*10) - 5];
     ClientConnection.registerConnection(this);
     console.log(this.id+'| open');
 
@@ -94,7 +94,7 @@ export default class ClientConnection {
 
   onMessage = (message) => {
     this.lastMessage = new Date().getTime();
-    ClientConnection.broadcastMessage(message, this);
+    ClientConnection.broadcastMessage(JSON.parse(message), this);
     console.log(this.id+'| message(last: '+this.lastMessage+'): ', message);
   }
 }
